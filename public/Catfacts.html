@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="stylesheets/style.css">
+<style type="text/css">
+
+</style>
+<html>
+<body>
+    <head>
+        <script src= "https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+    
+    <form>
+        Click to learn random cat facts <input type="text" id="form" value=""/><br>
+        <button id="button">Submit</button>
+        Facts <br><span id="catFacts">Empty</span>
+    </form>
+    
+    <script>
+        $("#button").click(function(event) {
+            event.preventDefault();
+            
+            var url = "owl?q=" + $("#form").val();
+            $.getJSON(url, function(data) {
+                var everything = "<ul>";
+                $.each(data.data, function(i, item) {
+                    everything += "<li>" + item.fact + "</li>";
+                });
+                
+                everything += "</ul>";
+                $("#catFacts").html(everything)
+            });
+        });
+        
+    </script>
+    
+    
+</body>
+</html>
