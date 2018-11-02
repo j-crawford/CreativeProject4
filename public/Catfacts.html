@@ -3,6 +3,7 @@
 
 <html>
     <head>
+        <title>All About Cats!</title>
         <script src= "https://code.jquery.com/jquery-1.10.2.js"></script>
         <link rel="stylesheet" href="stylesheets/style.css">
         <style type="text/css">
@@ -11,7 +12,9 @@
     </head>
 <body>
     
-    
+    <h1>Welcome to the cat page!</h1>
+    <br>
+    <p>Where we love our <span id="felion">feline</span> friends. Feel free to click around to learn more, cause <span id="everybody">"everybody wants to be a cat!"</span> ;)</p>
     <form>
         Click to learn random cat facts <br>
         <button id="button">Facts</button>
@@ -19,19 +22,34 @@
     </form>
     
     <script>
-        $("#button").click(function(event) {
-            event.preventDefault();
-            var sound=document.getElementById("catmeow");
-            sound.play();
-            var url = "owl?q=" + $("#form").val();
-            $.getJSON(url, function(data) {
-                var everything = "<ul>";
-                $.each(data.data, function(i, item) {
-                    everything += "<li>" + item.fact + "</li>";
+        $("document").ready(function(){
+            $("#everybody").click(function(event){
+                event.preventDefault();
+                //console.log("clicked");
+               var sound2= document.getElementById("wants");
+               sound2.play();
+            });
+            
+            $("#felion").click(function(event){
+                event.preventDefault();
+                var sound3=document.getElementById("lion");
+                sound3.play();
+            });
+        
+            $("#button").click(function(event) {
+                event.preventDefault();
+                var sound=document.getElementById("catmeow");
+                sound.play();
+                var url = "owl?q=" + $("#form").val();
+                $.getJSON(url, function(data) {
+                    var everything = "<ul>";
+                    $.each(data.data, function(i, item) {
+                        everything += "<li>" + item.fact + "</li>";
+                    });
+                    
+                    everything += "</ul>";
+                    $("#catFacts").html(everything)
                 });
-                
-                everything += "</ul>";
-                $("#catFacts").html(everything)
             });
         });
         
@@ -41,6 +59,16 @@
         <source src="audio/Cat Meow-SoundBible.com-1453940411.mp3" type="audio/mpeg">
         <source src="audio/Cat Meow-SoundBible.com-1453940411.wav" type="audio/wav">
         your browser does not support our audio.
+    </audio>
+    
+    <audio id=lion>
+        <source src="audio/Growling Lion-SoundBible.com-495747737.mp3" type="audio/mpeg">
+        <source src="audio/Growling Lion-SoundBible.com-495747737.wav" type="audio/wav">
+        your browser does not support our audio.
+    </audio>
+    
+    <audio id="wants">
+        <source src="audio/Everybody_Wants_To_Be_A_Cat-537405.mp3" type="audio/mpeg">
     </audio>
     
 </body>
