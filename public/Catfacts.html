@@ -12,11 +12,11 @@
     </head>
 <body>
     
-    <h1>Welcome to the cat page!</h1>
+    <h1>Welcome to the Cat Page!</h1>
     <br>
-    <p>Where we love our <span id="felion">feline</span> friends. Feel free to click around to learn more, cause <span id="everybody">"everybody wants to be a cat!"</span> ;)</p>
+    <p>Where we love our <span id="felion">feline</span> friends. Feel free to click around to learn more (and maybe even find a few suprises), cause <span id="everybody">"everybody wants to be a cat!"</span> ;)</p>
     <form>
-        Click to learn random cat facts <br>
+        Click to learn <span id="more"></span>random cat facts <br>
         <button id="button">Facts</button>
         <br><span id="catFacts">Empty</span>
     </form>
@@ -27,7 +27,11 @@
                 event.preventDefault();
                 //console.log("clicked");
                var sound2= document.getElementById("wants");
-               sound2.play();
+               if(sound2.paused){
+                    sound2.play();
+               }else{
+                   sound2.pause();
+               }
             });
             
             $("#felion").click(function(event){
@@ -35,7 +39,8 @@
                 var sound3=document.getElementById("lion");
                 sound3.play();
             });
-        
+            var moremessage="more ";
+            var count=0;
             $("#button").click(function(event) {
                 event.preventDefault();
                 var sound=document.getElementById("catmeow");
@@ -48,7 +53,9 @@
                     });
                     
                     everything += "</ul>";
-                    $("#catFacts").html(everything)
+                    $("#catFacts").html(everything);
+                    $("#more").html(moremessage);
+                    moremessage="even "+moremessage;
                 });
             });
         });
@@ -70,6 +77,11 @@
     <audio id="wants">
         <source src="audio/Everybody_Wants_To_Be_A_Cat-537405.mp3" type="audio/mpeg">
     </audio>
+    
+    <p>all audio used in accordance with attribution licence 3.0 unless otherwise, from soundbible.com</p>
+    <a href="http://soundbible.com/1290-Cat-Meowing.html">sound1</a>
+    
+    <a href="http://soundbible.com/1415-Growling-Lion.html">sound3</a>
     
 </body>
 </html>
