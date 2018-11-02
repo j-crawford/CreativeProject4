@@ -1,5 +1,9 @@
+html{
+  height:100%;
+}
+
 body {
-  padding: 50px;
+  padding: 20px 50px 0 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -11,6 +15,7 @@ body {
     background-image: url(https://www.warrenphotographic.co.uk/photography/bigs/26919-Colourpoint-kitten-lying-on-pink-background.jpg);
       background-repeat: no-repeat;
       font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+      height:100%;
 }
 button {
   background-color: #f4511e;
@@ -25,4 +30,14 @@ button {
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
+}
+#container{
+  min-height:100%;
+  position:relative;
+  padding-bottom:3em;
+}
+#footer{
+  position:absolute;
+  bottom:0;
+  height:3em;
 }
